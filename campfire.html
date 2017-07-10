@@ -9,23 +9,23 @@
 <a-scene altspace="fullspace: true">
 	<a-assets>
 		<a-asset-item id="sign-obj" src="files/sign.obj"></a-asset-item>
-    <a-asset-item id="sign-mtl" src="files/sign.mtl"></a-asset-item>
+    		<a-asset-item id="sign-mtl" src="files/sign.mtl"></a-asset-item>
 		<img id="banner-bg" src="files/wur-board.png">
-    <img id="message" src="examples/images/notification-bill-nye.png">
+    		<img id="message" src="examples/images/notification-bill-nye.png">
 		<img id="ok-button" src="examples/images/GO-NOW.png">
 		<img id="cockpit-button" src="examples/images/btn-NEW-NOTIFICATION.png">	
 		<img id="close-icon" src="examples/images/icon-close.png">
 		<img id="close-hover-icon" src="examples/images/close-hover.png">
-    <a-mixin id="sign-mix"
-      obj-model="obj: #sign-obj; mtl: #sign-mtl" 
-      position="0 -2 -0.5"
+		<a-mixin id="sign-mix"
+			obj-model="obj: #sign-obj; mtl: #sign-mtl" 
+			position="0 -2 -0.5"
 			altspace-cursor-collider="enabled: true"></a-mixin>
-    <a-mixin id="banner-mix"
+    		<a-mixin id="banner-mix"
 			geometry="primitive: plane; width: 16; height: 9" 
 		 	scale="0.19 0.19 0.19" position="0 -1.98 -0.405" rotation="0 0 0"
 			material="src: #question-board-bg"
 			altspace-cursor-collider="enabled: true"></a-mixin>
-    <a-mixin id="notification-bg"
+    		<a-mixin id="notification-bg"
 			geometry="primitive: plane; width: 1.2; height: 0.9" material="transparent: true; src: #message"
 			n-cockpit-parent altspace-cursor-collider="enabled: true"></a-mixin>
 		<a-mixin id="closes-dialog"
@@ -43,40 +43,40 @@
 			scale="0.0001 0.0001 0.0001" position="0 -0.45 -0.001"
 			n-cockpit-parent altspace-cursor-collider="enabled: true"></a-mixin>
 		<a-mixin id="cockpit"
-      position="0.6 -0.15 -0.8" rotation="-30 0 0" 
+      			position="0.6 -0.15 -0.8" rotation="-30 0 0" 
 			geometry="primitive: plane; width: 0.4; height: 0.1" 
-      material="transparent: true; src: #cockpit-button"
+      			material="transparent: true; src: #cockpit-button"
 		 	n-cockpit-parent altspace-cursor-collider="enabled: true"></a-mixin>
 	</a-assets>
 	
-  <!-- Sign -->
+  	<!-- Sign -->
 	<a-entity obj-model="obj: #sign-obj; mtl: #sign-mtl" position="0 -2 -0.5"></a-entity>
-  <a-entity mixin="sign-mix banner-mix"></a-entity>
+	<a-entity mixin="sign-mix banner-mix"></a-entity>
 	  
 	<!-- Notification -->
-  <a-entity id="dialog" position="0 0.6 -1" scale="0.0001 0.0001 0.0001" n-cockpit-parent>
+  	<a-entity id="dialog" position="0 0.6 -1" scale="0.0001 0.0001 0.0001" n-cockpit-parent>
 		<a-animation attribute="scale" begin="toggle-dialog" dur="1" from="0.0001 0.0001 0.0001" to="1 1 1" direction="alternate"></a-animation>
 		<a-animation attribute="scale" begin="close-dialog" dur="1" from="1 1 1" to="0.0001 0.0001 0.0001"></a-animation>
 		<a-entity mixin="notification-bg"></a-entity>
 		<a-entity id="ok" mixin="button closes-dialog"
 			navigate="link: #weblink"
-      wire__remove="on: click; emit: remove-cockpit; target: #cockpit-notification;"
-      wire__enter="on: mouseenter; emit: over; target: #ok"
+      			wire__remove="on: click; emit: remove-cockpit; target: #cockpit-notification;"
+      			wire__enter="on: mouseenter; emit: over; target: #ok"
 			wire__leave="on: mouseleave; emit: leave; target: #ok">
 			<a-animation attribute="scale" begin="over" dur="100" from="1 1 1" to="1.1 1.1 1.1"></a-animation>
 			<a-animation attribute="scale" begin="leave" dur="100" from="1.1 1.1 1.1" to="1 1 1"></a-animation>
 		</a-entity>
 		<a-entity mixin="close closes-dialog"
-      wire__remove="on: click; emit: remove-cockpit; target: #cockpit-notification;"
+      			wire__remove="on: click; emit: remove-cockpit; target: #cockpit-notification;"
 			wire__over="on: mouseenter; emit: over; target: #close-hover;"
 			wire__leave="on: mouseleave; emit: leave; target: #close-hover;"></a-entity>
-		<a-entity id="close-hover" mixin="close2">
+			<a-entity id="close-hover" mixin="close2">
 			<a-animation attribute="scale" begin="over" dur="1" from="0.0001 0.0001 0.0001" to="0.05 0.05 0.05"></a-animation>
 			<a-animation attribute="scale" begin="leave" dur="1" from="0.05 0.05 0.05" to="0.0001 0.0001 0.0001"></a-animation>
 		</a-entity>			  
 	</a-entity>
 	<a-entity id="cockpit-notification" mixin="cockpit"
-    wire="on: click; emit: toggle-dialog; targets: #dialog;"
+    		wire="on: click; emit: toggle-dialog; targets: #dialog;"
 		wire__over="on: mouseenter; emit: cockpit-over;"
 		wire__leave="on: mouseleave; emit: cockpit-leave;">
 		<a-animation attribute="scale" begin="cockpit-over" dur="100" from="1 1 1" to="1.1 1.1 1.1"></a-animation>
@@ -85,7 +85,7 @@
 	</a-entity>
 	<a-entity id="notification-sound" 
 		geometry="primitive: plane; width: 0.1; height: 0.1" material="transparent: true;"
-    n-sound="src: examples/images/notify.wav; on: animationend; autoplay: true; volume: 0.5;"
+    		n-sound="src: examples/images/notify.wav; on: animationend; autoplay: true; volume: 0.5;"
 		n-skeleton-parent="part: head;">
 	</a-entity>
   
