@@ -32,7 +32,7 @@
 			scale="0.0001 0.0001 0.0001" position="0 -0.3 -0.001"
 			n-cockpit-parent altspace-cursor-collider="enabled: true"></a-mixin>
 		<a-mixin id="cockpit"
-	    		position="0.6 -0.15 -0.8" rotation="-30 0 0" 
+	    		position="0.7 -0.15 -0.8" rotation="-30 0 0" 
 			geometry="primitive: plane; width: 0.4; height: 0.1" 
 		    	material="transparent: true; src: #cockpit-button"
 		 	n-cockpit-parent altspace-cursor-collider="enabled: true"></a-mixin>
@@ -63,11 +63,6 @@
 		<a-animation attribute="scale" begin="cockpit-over" dur="100" from="1 1 1" to="1.1 1.1 1.1"></a-animation>
 		<a-animation attribute="scale" begin="cockpit-leave" dur="100" from="1.1 1.1 1.1" to="1 1 1"></a-animation>
 		<a-animation attribute="scale" begin="remove-cockpit" dur="1" from="1.1 1.1 1.1" to="0.0001 0.0001 0.0001"></a-animation>
-	</a-entity>
-	<a-entity id="notification-sound" 
-		geometry="primitive: plane; width: 0.1; height: 0.1" material="transparent: true;"
-	  	n-sound="src: examples/images/notify.wav; on: animationend; autoplay: true; volume: 0.5;"
-		n-skeleton-parent="part: head;">
 	</a-entity>
 </a-scene>
 </body>
